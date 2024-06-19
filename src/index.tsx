@@ -9,4 +9,8 @@ app.get("/", (c) => {
   return c.render(<h1>Hello júlio!</h1>);
 });
 
+app.get("/projects/:name", (c) => {
+  return c.render(<h1>project {c.req.param("name")}</h1>);
+});
+
 export default app;
