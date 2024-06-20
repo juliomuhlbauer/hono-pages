@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { renderer } from "./renderer";
-// import postgres from "postgres";
+import postgres from "postgres";
 
 const app = new Hono();
 
@@ -10,12 +10,12 @@ app.get("/", (c) => {
   return c.render(<h1>Hello júlio!</h1>);
 });
 
-// const sql = postgres();
+const sql = postgres();
 
 app.get("/listings", async (c) => {
   // const listings = await sql`select * from listings limit 10;`;
 
-  console.log(import.meta.env.VITE_DATABASE_URL);
+  // console.log(import.meta.env.VITE_DATABASE_URL);
 
   return c.render(<div>{JSON.stringify("", null, 2)}</div>);
 });
