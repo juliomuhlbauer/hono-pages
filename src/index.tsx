@@ -10,9 +10,7 @@ app.get("/", (c) => {
   return c.render(<h1>Hello júlio!</h1>);
 });
 
-const sql = postgres(import.meta.env.VITE_DATABASE_URL, {
-  prepare: false,
-});
+const sql = postgres();
 
 app.get("/listings", async (c) => {
   const listings = await sql`select * from listings limit 10;`;
