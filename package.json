@@ -8,7 +8,8 @@
     "deploy": "$npm_execpath run build && wrangler pages deploy"
   },
   "dependencies": {
-    "hono": "^4.4.7"
+    "hono": "^4.4.7",
+    "postgres": "^3.4.4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240529.0",
