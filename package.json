@@ -8,6 +8,8 @@
     "deploy": "$npm_execpath run build && wrangler pages deploy"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.9.3",
+    "@vercel/postgres": "^0.8.0",
     "hono": "^4.4.7",
     "postgres": "^3.4.4"
   },

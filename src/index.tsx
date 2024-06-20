@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { renderer } from "./renderer";
-import postgres from "postgres";
+import { neon } from "@neondatabase/serverless";
 
 const app = new Hono();
 
@@ -10,7 +10,7 @@ app.get("/", (c) => {
   return c.render(<h1>Hello júlio!</h1>);
 });
 
-const sql = postgres(import.meta.env.VITE_DATABASE_URL);
+const sql = neon(import.meta.env.VITE_DATABASE_URL);
 
 app.get("/listings", async (c) => {
   const listings = await sql`select * from listings limit 10;`;
