@@ -10,6 +10,7 @@
   "dependencies": {
     "@neondatabase/serverless": "^0.9.3",
     "@vercel/postgres": "^0.8.0",
+    "drizzle-orm": "^0.31.2",
     "hono": "^4.4.7",
     "postgres": "^3.4.4"
   },
