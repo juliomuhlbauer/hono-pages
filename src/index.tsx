@@ -1,8 +1,6 @@
 import { Hono } from "hono";
 import { renderer } from "./renderer";
-import { drizzle } from "drizzle-orm/vercel-postgres";
-import { sql } from "drizzle-orm";
-import { sql as VercelSql } from "@vercel/postgres";
+import postgres from "postgres";
 
 const app = new Hono();
 
@@ -12,15 +10,17 @@ app.get("/", (c) => {
   return c.render(<h1>Hello júlio!</h1>);
 });
 
-export const db = drizzle(VercelSql);
+const sql = postgres(import.meta.env.VITE_DATABASE_URL, {
+  prepare: false,
+});
 
 app.get("/listings", async (c) => {
-  const listings = await db.execute(sql`select * from listings limit 10;`);
+  const listings = await sql`select * from listings limit 10;`;
 
   return c.render(
     <pre>
       {JSON.stringify(
-        listings.rows.map((l) => l.id),
+        listings.map((l) => l.id),
         null,
         2
       )}
